@@ -205,7 +205,7 @@ class Checkout(Component):
         if not picking:
             package = search.package_from_scan(barcode)
             if package:
-                pickings = package.move_line_ids.filtered(
+                pickings = package.planned_move_line_ids.filtered(
                     lambda ml: ml.state not in ("cancel", "done")
                 ).mapped("picking_id")
                 if len(pickings) > 1:
